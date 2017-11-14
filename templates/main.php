@@ -1,90 +1,63 @@
 <!DOCTYPE html>
 <html>
-<head>
+	<head>
+		<title>Verifică știrile cu Factual</title>
 
-<title>PHP-Proxy</title>
+		<meta name="generator" content="php-proxy.com">
+		<meta name="version" content="<?=$version;?>">
 
-<meta name="generator" content="php-proxy.com">
-<meta name="version" content="<?=$version;?>">
+		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/factual.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="fs-form-wrap" id="fs-form-wrap">
+				<div class="fs-title">
+					<h1>Factual</h1>
+				</div>
 
-<style type="text/css">
-html body {
-	font-family: Arial,Helvetica,sans-serif;
-	font-size: 12px;
-}
+				<form action="index.php" method="post" autocomplete="off" novalidate>
+					<div class="fs-form fs-form-full">
+						<ol class="fs-fields">
+							<li class="fs-current">
+								<label class="fs-field-label fs-anim-upper" for="q2" data-info="Adresa site-ului sau articolului care va fi verificat prin platforma Factual.">
+									Adresa articolului
+								</label>
+								<input class="fs-anim-lower" id="url" name="url" type="text" placeholder="http://" required="">
+							</li>
+						</ol>
+					</div>
+					<div class="fs-controls">
+						<button class="fs-continue fs-show">Verifică</button>
+					</div>
+				</form>
 
-#container {
-	width:500px;
-	margin:0 auto;
-	margin-top:150px;
-}
+				<span class="fs-message-error fs-show">
+					<?php if (isset($error_msg)) { ?>
+						<?php echo $error_msg; ?>
+					<?php } ?>
+				</span>
+			</div>
+		</div>
 
-#error {
-	color:red;
-	font-weight:bold;
-}
+		<script>
+			(function() {
+				var form = document.getElementsByTagName('form')[0];
+				var inputElement = document.getElementById('url');
+				var errorContainer = document.getElementsByClassName('fs-message-error')[0];
 
-#frm {
-	padding:10px 15px;
-	background-color:#FFC8C8;
-	
-	border:1px solid #818181;
-	
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
-	border-radius: 8px;
-}
+				form.addEventListener('submit', function (e) {
+					var value = inputElement.value;
 
-#footer {
-	text-align:center;
-	font-size:10px;
-	margin-top:35px;
-	clear:both;
-}
-</style>
-
-</head>
-
-<body>
-
-
-<div id="container">
-
-	<div style="text-align:center;">
-		<h1 style="color:blue;">PHP-Proxy</h1>
-	</div>
-	
-	<?php if(isset($error_msg)){ ?>
-	
-	<div id="error">
-		<p><?php echo $error_msg; ?></p>
-	</div>
-	
-	<?php } ?>
-	
-	<div id="frm">
-	
-	<!-- I wouldn't touch this part -->
-	
-		<form action="index.php" method="post" style="margin-bottom:0;">
-			<input name="url" type="text" style="width:400px;" autocomplete="off" placeholder="http://" />
-			<input type="submit" value="Go" />
-		</form>
-		
-		<script type="text/javascript">
-			document.getElementsByName("url")[0].focus();
+					if (value === '') {
+						errorContainer.innerText = 'Vă rugăm să introduceți o adresă web.';
+						e.preventDefault();
+					} else if (!/^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})).?)(?::\d{2,5})?(?:[/?#]\S*)?$/i.test(value)) {
+						errorContainer.innerText = 'Vă rugăm să introduceți o adresă web validă.';
+						e.preventDefault();
+					}
+				}, false);
+			})();
 		</script>
-		
-	<!-- [END] -->
-	
-	</div>
-	
-</div>
-
-<div id="footer">
-	Powered by <a href="//www.php-proxy.com/" target="_blank">PHP-Proxy</a> <?php echo $version; ?>
-</div>
-
-
-</body>
+	</body>
 </html>

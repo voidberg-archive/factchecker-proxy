@@ -1,0 +1,309 @@
+@import 'popover';
+@import 'fonts';
+@import 'facebook';
+
+.factchecker-fact-mark-true {
+  background-color: #ABE5DD !important;
+}
+
+.factchecker-fact-mark-ptrue {
+  background-color: #D4EFED !important;
+}
+
+.factchecker-fact-mark-false {
+  background-color: #FEC0C2 !important;
+}
+
+.factchecker-fact-mark-pfalse {
+  background-color: #FED9D9 !important;
+}
+
+.factchecker-fact-mark-neutral {
+  background-color: #D4D4D4 !important;
+}
+
+mark {
+  cursor: pointer;
+}
+
+.factchecker-fact-details-container {
+  position:fixed;
+  bottom:0px;
+  width:100%;
+
+  text-align: center;
+}
+
+.factchecker-fact-details {
+  font-family: factual_source_sans_pro,Helvetica,Arial,sans-serif;
+  background: white;
+
+  width: 400px;
+
+  border-top: 10px solid #c2c2c2;
+
+  &.factchecker-fact-open {
+    display: block;
+  }
+
+  &.factchecker-fact-true {
+    border-top-color: #00A98E;
+
+    .factchecker-fact-details__status {
+      background-color: #00A98E;
+      background-image: url('chrome-extension://__MSG_@@extension_id__/assets/check_true.png');
+      background-repeat: no-repeat;
+    }
+  }
+
+  &.factchecker-fact-false {
+    border-top-color: #EA2F31;
+
+    .factchecker-fact-details__status {
+      background-color: #EA2F31;
+      background-image: url('chrome-extension://__MSG_@@extension_id__/assets/check_false.png');
+      background-repeat: no-repeat;
+    }
+  }
+
+  &.factchecker-fact-pfalse {
+    border-top-color: #F38181;
+
+    .factchecker-fact-details__status {
+      background-color: #F38181;
+      background-image: url('chrome-extension://__MSG_@@extension_id__/assets/check_false.png');
+      background-repeat: no-repeat;
+    }
+  }
+
+  &.factchecker-fact-ptrue {
+    border-top-color: #7CCAC2;
+
+    .factchecker-fact-details__status {
+      background-color: #7CCAC2;
+      background-image: url('chrome-extension://__MSG_@@extension_id__/assets/check_true.png');
+      background-repeat: no-repeat;
+    }
+  }
+
+  &.factchecker-fact-neutral {
+    border-top-color: #D4D4D4;
+
+    .factchecker-fact-details__status {
+      background-color: #D4D4D4;
+      background-image: url('chrome-extension://__MSG_@@extension_id__/assets/check_neutral.png');
+      background-repeat: no-repeat;
+    }
+  }
+
+  .factchecker-fact-details__header {
+    border-left: 1px solid #c2c2c2;
+
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .factchecker-fact-details__date {
+      color: #939393;
+      float: left;
+      padding-left: 20px;
+      padding-top: 10px;
+      font-size: 15px;
+    }
+
+    .factchecker-fact-details__close {
+      float: right;
+
+      a {
+        position: absolute;
+        top: 1px;
+        right: 4px;
+        background-color: #454545;
+        width: 21px;
+        height: 21px;
+        display: block;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        &:before, &:after {
+          position: absolute;
+          left: 9px;
+          content: ' ';
+          height: 21px;
+          width: 2px;
+          background-color: white;
+        }
+
+        &:before {
+          transform: rotate(45deg);
+        }
+
+        &:after {
+          transform: rotate(-45deg);
+        }
+
+        &:hover:before, &:hover:after {
+          background-color: gray;
+        }
+      }
+    }
+
+    .factchecker-fact-details__statusc {
+      float: right;
+
+      padding-right: 0px;
+      padding-left: 20px;
+
+      .factchecker-fact-details__corner {
+        width: 30px;
+        background: red;
+      }
+
+      .factchecker-fact-details__status {
+        color: white;
+        font-size: 14px;
+        padding: 5px 30px 5px 40px;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 20px #ffffff;
+        background-position: 10px;
+      }
+    }
+  }
+
+  .factchecker-fact-details__body {
+    padding: 20px;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 16px;
+    border-left: 1px solid #c2c2c2;
+    border-right: 1px solid #c2c2c2;
+  }
+
+  .factchecker-fact-details__footer {
+    padding: 10px;
+    background-color: #f1f1f2;
+    border: 1px solid #c2c2c2;
+
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .factchecker-details--footer__logo {
+      float: left;
+      width: 60px;
+      height: 44px;
+    }
+
+    .factchecker-details--footer__more {
+      float: left;
+      width: 150px;
+
+      padding-top: 8px;
+
+      font-size: 12px;
+      color: #8a8989;
+      text-transform: uppercase;
+
+      a {
+        color: #2653c9;
+        text-decoration: none;
+        border-bottom: 2px solid #C9D2E7;
+      }
+    }
+
+    .factchecker-details--footer__share {
+      float: right;
+      text-transform: uppercase;
+      margin-top: 11px;
+      margin-right: 20px;
+
+      a {
+        font-size: 14px;
+        font-weight: bold;
+        color: #2653c9;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &.factchecker-fact-unmatched {
+      display: block;
+      position: relative;
+      margin: 0 auto;
+      width: 650px;
+
+    .factchecker-fact-details__close {
+      a {
+        right: 0;
+        top: -10px;
+      }
+    }
+
+    .factchecker-fact-details__statusc {
+      padding-right: 0px;
+      padding-left: 20px;
+
+      .factchecker-fact-details__status {
+        padding-right: 30px;
+      }
+    }
+
+    .factchecker-fact-details__header {
+      margin-bottom: -10px;
+    }
+
+    .factchecker-fact-details__footer {
+      background-color: white;
+      border-top-width: 0;
+
+      .factchecker-details--footer__more {
+        width: 400px;
+        text-align: left;
+        padding-top: 12px;
+        font-weight: bold;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.factchecker-fact-mark {
+  &.factchecker-fact-mark-icon {
+    &::after {
+      content: 'a';
+      font-family: 'factual' !important;
+      font-style: normal !important;
+      color: #474647 !important;
+    }
+  }
+}
+
+.factchecker-fact-facebook {
+  .factchecker-fact-unmatched {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width: auto;
+    border-top-width: 10px;
+
+    .factchecker-fact-details__statusc {
+      padding-right: 0px;
+
+      .factchecker-fact-details__status {
+        padding-right: 10px;
+      }
+    }
+
+    .factchecker-details--footer__more {
+      padding-top: 4px;
+      width: 300px;
+    }
+  }
+}

@@ -86,7 +86,7 @@ foreach(Config::get('plugins', array()) as $plugin){
 	}
 	
 	// otherwise plugin_class better be loaded already through composer.json and match namespace exactly \\Vendor\\Plugin\\SuperPlugin
-	$proxy->getEventDispatcher()->addSubscriber(new $plugin_class());
+	$proxy->getEventDispatcher()->addSubscriber(new $plugin_class(Config::get('client_url')));
 }
 
 try {
