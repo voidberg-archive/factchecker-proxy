@@ -1,3 +1,5 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 # Factual Factchecker Proxy
 
 A webapp that allows users to use the Factual fact checks on any site, without using the browser extension. Built using [php-proxy](https://github.com/Athlon1600/php-proxy).
